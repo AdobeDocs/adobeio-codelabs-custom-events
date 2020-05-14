@@ -1,24 +1,26 @@
 ## Requirements
 
-This codelab is useful for anyone who are getting started with developing Firefly apps.
-
-### Required skills
-
-* **Required:** programming skills in any language
-* *Optional:* basic knowledge with Javascript and Node.js
+### Developer Console Access
+A pre-requisite of the codelab is to have access to [Developer console](https://console.adobe.io/home) 
 
 ### Pre-requisites
 
-If not already done, you should follow the below links to have your environment set up before starting the codelab:
+- [NodeJS](https://nodejs.org/en/download/) (at least v12). It should also install npm together. We recommend using [nvm](https://github.com/nvm-sh/nvm/blob/master/README.md) to manage NodeJS installation and versions on your machine.  
+- [Visual Studio Code (VSCode)](https://code.visualstudio.com/download) as the supported IDE for editor, debuggger, etc. You can use any other IDE as a code editor, but advanced usage e.g. debugger is not yet supported.
 
-* [How to Get Access to Project Firefly](https://github.com/AdobeDocs/project-firefly/blob/master/overview/getting_access.md)
-* [Setting up Your Environment](https://github.com/AdobeDocs/project-firefly/blob/master/getting_started/setup.md)
-* [Creating your First Firefly App](https://github.com/AdobeDocs/project-firefly/blob/master/getting_started/first_app.md)
+### Command Line Interface
 
-### Codelab environment
+Install the [Project Firefly CLI](https://github.com/adobe/aio-cli) with: 
+```bash
+npm install -g @adobe/aio-cli
+```     
 
-In addition to above pre-requisites, you'll need:
+Install the adobe I/O events lib
+```bash
+npm install @adobe/aio-lib-events
+```  
+### Console Integration
 
-* A
-* B
-* C
+We assume you have an available integration on I/O Console with I/O Management Service needs to be enabled for the integration. This will help create the JWT token with adobeio_api scope which is required for all the API calls. 
+
+Start the first lesson: [Start the first lesson](/lessons/lesson1.md).
