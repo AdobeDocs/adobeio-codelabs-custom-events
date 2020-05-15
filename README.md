@@ -7,7 +7,7 @@ The Events SDK provides a wrapper over these API calls making it easier for deve
 In this lab, you will learn how to use I/O Events SDK:
 * Register a provider
 * Register the event metadata
-* Ensure that these events are published to Adobe I/O events in cloud events format
+* Ensure that these events are published to Adobe I/O events 
 * Register a webhook / journalling endpoint to comsume event
 
 

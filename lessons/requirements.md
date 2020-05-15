@@ -15,12 +15,12 @@ Install the [Project Firefly CLI](https://github.com/adobe/aio-cli) with:
 npm install -g @adobe/aio-cli
 ```     
 
-Install the adobe I/O events lib
+Install the [Adobe I/O Events Lib](https://github.com/adobe/aio-lib-events)
 ```bash
 npm install @adobe/aio-lib-events
 ```  
 ### Console Integration
 
-We assume you have an available integration on I/O Console with I/O Management Service needs to be enabled for the integration. This will help create the JWT token with adobeio_api scope which is required for all the API calls. 
+We assume you have acess to create integration on I/O Console with I/O Management Service needs to be enabled for the integration. This will help create the JWT token with adobeio_api scope which is required for all the API calls. 
 
-Start the first lesson: [Start the first lesson](/lessons/lesson1.md).
+Start the first lesson: [Create a Console Integration](/lessons/lesson1.md).

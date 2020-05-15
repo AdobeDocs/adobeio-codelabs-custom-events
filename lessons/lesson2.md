@@ -1,12 +1,11 @@
 ## Lesson 2: Set up Project
 
-### Create a project 
-In this project, one usually have  
-* package.json
-* usage
-* .env (optional)
+In this project, you will do 
+* add `package.json` for your project
+* Fill in `.env` file with needed information 
+* Set environment varialbles   
 
-1. package.json
+1. `package.json` sample file
 ```javascript
 {
   "name": "helloworld",
@@ -26,8 +25,9 @@ In this project, one usually have
   }
 }
 ```
+
 2. Fill in the required credentials 
-Filling in the information from lesson 1 console integration
+Filling in the information from lesson 1 console integration, you can choose import from `.env` file or other ways you are comfortable with 
 ```javascript
 EVENTS_ORG_ID=
 EVENTS_API_KEY=
@@ -36,7 +36,16 @@ EVENTS_WORKSPACE_ID=
 EVENTS_PROJECT_ID=
 EVENTS_INTEGRATION_ID=
 ```
-3. Usage
+
+3. Set environment varialbles
+run `export` in terminal or use IDE, etc 
+```bash
+EVENTS_BASE_URL='https://api.adobe.io'
+EVENTS_INGRESS_URL='https://eventsingress.adobe.io'
+```
+
+
+### Usage 
 Initialize the SDK
 ```javascript
 const sdk = require('@adobe/aio-lib-events')

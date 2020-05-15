@@ -1,10 +1,5 @@
 ## Lesson 3: Explore Custom Event SDK
 
-### Export the right url
-Export 
-EVENTS_BASE_URL='https://api.adobe.io'
-EVENTS_INGRESS_URL='https://eventsingress.adobe.io'
-
 ### Register an event provider 
 To register an event provider, sample code like this 
 ```javascript
@@ -20,7 +15,7 @@ async function createProvider(sdkClient) {
 }
 ```
 ### Create event metadata
-Filling in the information from lesson 1 console integration
+sample code for create event metadata
 ```javascript
 async function createEventMetadata(sdkClient, providerId) {
   // create event metadata
@@ -35,7 +30,8 @@ async function createEventMetadata(sdkClient, providerId) {
 }
 ```
 
-### Create journal registration 
+### Create journal registration and fetch jouranlling position
+sample code for create journal registration
 ```javascript
 async function registerJournallingEndpoint(sdkClient, providerId, eventCode) {
   // create journal registration
@@ -61,7 +57,23 @@ async function fetchJournallingPosition(sdkClient, journallingUrl) {
     { latest: true })
 }
 ```
-### Use webhook 
+Note: there are two ways to consuming event: 1. through journaling 2. through webhook 
+if you would like to use webhook, simply modify `delivery_type` and add `webhook_url` 
+```javascript
+{
+      name: 'Test Events SDK ' + randomNumber,
+      description: 'Test Events SDK ' + randomNumber,
+      client_id: apiKey,
+      webhook_url: 'url',
+      delivery_type: 'WEBHOOK',
+      events_of_interest: [
+        {
+          event_code: eventCode,
+          provider_id: providerId
+        }
+      ]
+    }
+```
 
 ### Fire event
 ```javascript
@@ -80,6 +92,21 @@ async function publishEvent(sdkClient, providerId, eventCode) {
   })
   console.log(publish)
 }
+```
+
+
+
+Sample code to execute
+```javascript
+const run = async () => {
+  let sdkClient = await initSDK()
+  let provider = await createProvider(sdkClient)
+  eventMetadata = await createEventMetadata(sdkClient, provider.id)
+  journalReg = await registerJournallingEndpoint(sdkClient, provider.id, eventMetadata.event_code)
+  await sleep(60000)
+  journalling = await fetchJournallingPosition(sdkClient, journalReg.events_url)
+  await publishEvent(sdkClient, provider.id, eventMetadata.event_code)
+};
 ```
 
 Next lesson: [Ensure events are published](lesson4.md)
