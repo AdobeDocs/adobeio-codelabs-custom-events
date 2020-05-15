@@ -1,6 +1,6 @@
 {
-  "title": "Getting Start with Adobe I/O Custom Event SDK",
-  "repository": "https://github.com/AdobeDocs/adobeio-codelabs-custom-event/tree/init-content",
+  "title": "Getting Started with Adobe I/O Custom Event",
+  "repository": "https://github.com/AdobeDocs/adobeio-codelabs-campaign-standard",
   "author": {
     "name": "Jie Yu",
     "email": "iodev@adobe.com"
@@ -14,21 +14,21 @@
     "url": "/lessons/requirements",
     "duration": 5
   }, {
-    "title": "Lesson 1: Create an Console Integration",
+    "title": "Lesson 1: Create a Console Integration",
     "url": "/lessons/lesson1",
     "duration": 5
   }, {
-    "title": "Lesson 2: Start a project",
+    "title": "Lesson 2: Set up Project",
     "url": "/lessons/lesson2",
-    "duration": 2
+    "duration": 5
   }, {
-    "title": "Lesson 3: Explore custom event SDK",
+    "title": "Lesson 3: Explore Custom Event SDK",
     "url": "/lessons/lesson3",
     "duration": 10
   }, {
-    "title": "Lesson 4: Test and Verify event",
+    "title": "Lesson 4: Ensure Events are Published",
     "url": "/lessons/lesson4",
-    "duration": 5
+    "duration": 10
   }, {
     "title": "Well Done",
     "url": "/lessons/welldone",

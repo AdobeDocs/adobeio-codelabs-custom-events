@@ -1,4 +1,4 @@
-## Lesson 4: Test and Verify event 
+## Lesson 4: Ensure Events are published
 
 ### Through Console
 What you will see in console - event provider 

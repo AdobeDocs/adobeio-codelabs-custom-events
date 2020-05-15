@@ -1,4 +1,4 @@
-## Lesson 3: Explore custom event SDK
+## Lesson 3: Explore Custom Event SDK
 
 ### Export the right url
 Export 
@@ -82,4 +82,4 @@ async function publishEvent(sdkClient, providerId, eventCode) {
 }
 ```
 
-Next lesson: [Well done](welldone.md)
+Next lesson: [Ensure events are published](lesson4.md)

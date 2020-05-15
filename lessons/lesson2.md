@@ -1,4 +1,4 @@
-## Lesson 2: Start a project 
+## Lesson 2: Set up Project
 
 ### Create a project 
 In this project, one usually have  

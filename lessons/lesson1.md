@@ -1,4 +1,4 @@
-## Lesson 1: Create an Console Integration 
+## Lesson 1: Create a Console Integration 
 
 In order to use custom event SDK, you need to have:
 * IMS Org Id:The Organization Id for which the provider, event metadata, etc are to be created which can be obtained using the Console or Transporter API.
@@ -10,4 +10,4 @@ In order to use custom event SDK, you need to have:
 TODO: fill in console integration information and how to get env 
 
 
-Next lesson: [Register a event provider](lesson2.md)
+Next lesson: [Set up Project](lesson2.md)
