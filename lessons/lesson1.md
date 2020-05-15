@@ -16,10 +16,12 @@ In order to use custom event SDK, you need to get below informtion from console 
 3. follow the steps to configure API, create a new service account (JWT) credential, `config.zip` will be
 downloaed automatically, you will need the private key to generate JWT token 
 
-4. Get credential details information, generate JWT and download the JSON file
+4. Go to `project overview` tab, download project metadata from below `download` button and get the needed info from this `.json`file 
+![download](assets/download.png)
+![projectjson](assets/project-json.png)
+
+5. Get credential details information, generate JWT 
 ![console](assets/console.png)
-
-
 
 Now you should get all the information you need to start using your Event SDK 
 

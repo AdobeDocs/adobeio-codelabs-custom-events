@@ -31,17 +31,17 @@ Filling in the information from lesson 1 console integration, you can choose imp
 ```javascript
 EVENTS_ORG_ID=
 EVENTS_API_KEY=
-EVENTS_JWT_TOKEN=
+EVENTS_CONSUMER_ORG_ID=
 EVENTS_WORKSPACE_ID=
 EVENTS_PROJECT_ID=
 EVENTS_INTEGRATION_ID=
 ```
 
 3. Set environment varialbles
-run `export` in terminal or use IDE, etc 
+run in terminal or use IDE 
 ```bash
-EVENTS_BASE_URL='https://api.adobe.io'
-EVENTS_INGRESS_URL='https://eventsingress.adobe.io'
+export EVENTS_INGRESS_URL='https://eventsingress-stage.adobe.io'
+export EVENTS_BASE_URL='https://api-stage.adobe.io'
 ```
 
 
