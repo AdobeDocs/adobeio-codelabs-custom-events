@@ -1,80 +1,127 @@
-## Lesson 2: Set up Project
+## Lesson 2: Explore Custom Event SDK
 
-In this project, you will do 
-* add `package.json` for your project
-* Fill in `.env` file with needed information 
-* Set environment varialbles   
+Once you set up the project and credentials, below is a sample breakdown of how to use event SDK:
+* Register and event provider
+* Create event metadata
+* Create jouranl registration or webhook registration 
+* Fire event 
 
-1. `package.json` sample file
+By completing these steps, you will be able to see your event provider and journal or webhook registration on developer console as show below
+
+For your convenience,the project source code of the codelab is available [here](https://github.com/AdobeDocs/adobeio-codelabs-custom-event/tree/init-content/lessons/source/event-codelab-sample-code.zip)
+
+### Register an event provider 
+To register an event provider, sample code like this 
+```javascript
+async function createProvider(sdkClient) {
+  // create a provider
+  provider = await sdkClient.createProvider(consumerOrgId, projectId,
+    workspaceId,
+    {
+      label: 'EventsSDKCodeLab ' + randomNumber,
+      organization_id: orgId
+    })
+  return provider
+}
+```
+### Create event metadata
+sample code for create event metadata
+```javascript
+async function createEventMetadata(sdkClient, providerId) {
+  // create event metadata
+  eventCode = 'com.adobe.events.sdk.event.' + randomNumber
+  return await sdkClient.createEventMetadataForProvider(consumerOrgId,
+    projectId,
+    workspaceId, providerId, {
+      event_code: eventCode,
+      description: 'EventsSDKCodeLab demo for Events SDK',
+      label: 'EventsSDKCodeLab ' + randomNumber
+    })
+}
+```
+
+### Create journal registration and fetch jouranlling position
+sample code for create journal registration
+```javascript
+async function registerJournallingEndpoint(sdkClient, providerId, eventCode) {
+  // create journal registration
+  journalReg = await sdkClient.createWebhookRegistration(consumerOrgId,
+    integrationId, {
+      name: 'EventsSDKCodeLab ' + randomNumber,
+      description: 'EventsSDKCodeLab ' + randomNumber,
+      client_id: apiKey,
+      delivery_type: 'JOURNAL',
+      events_of_interest: [
+        {
+          event_code: eventCode,
+          provider_id: providerId
+        }
+      ]
+    })
+    return journalReg
+}
+
+async function fetchJournallingPosition(sdkClient, journallingUrl) {
+  // fetch position for next event for journalling
+  return await sdkClient.getEventsFromJournal(journallingUrl,
+    { latest: true })
+}
+```
+Note: there are two ways to consuming event: 1. through journaling 2. through webhook 
+if you would like to use webhook, simply modify `delivery_type` and add `webhook_url` 
 ```javascript
 {
-  "name": "helloworld",
-  "version": "1.0.0",
-  "repository": "https://github.com/adobe/aio-lib-events/",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "start": "node index.js"
-  },
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "dotenv": "^8.1.0",
-    "@js-joda/core": "^2.0.0",
-    "@adobe/aio-lib-events": "1.0.0"
-  }
+      name: 'EventsSDKCodeLab ' + randomNumber,
+      description: 'EventsSDKCodeLab' + randomNumber,
+      client_id: apiKey,
+      webhook_url: 'url',
+      delivery_type: 'WEBHOOK',
+      events_of_interest: [
+        {
+          event_code: eventCode,
+          provider_id: providerId
+        }
+      ]
+    }
+```
+
+### Fire event
+```javascript
+async function publishEvent(sdkClient, providerId, eventCode) {
+  // fire event
+  console.log(eventCode)
+  console.log(providerId)
+  const publish = await sdkClient.publishEvent({
+    id: 'EventsSDKCodeLab-' + randomNumber,
+    source: 'urn:uuid:' + providerId,
+    time: ZonedDateTime.now(ZoneOffset.UTC).toString(),
+    type: eventCode,
+    data: {
+      test: 'EventsSDKCodeLab_' + randomNumber
+    }
+  })
+  console.log(publish)
 }
 ```
 
-2. Fill in the required credentials 
-Filling in the information from lesson 1 console integration, you can choose import from `.env` file or other ways you are comfortable with 
+### Sample code to execute 
 ```javascript
-EVENTS_ORG_ID=
-EVENTS_API_KEY=
-EVENTS_CONSUMER_ORG_ID=
-EVENTS_WORKSPACE_ID=
-EVENTS_PROJECT_ID=
-EVENTS_INTEGRATION_ID=
+const run = async () => {
+  let sdkClient = await initSDK()
+  let provider = await createProvider(sdkClient)
+  eventMetadata = await createEventMetadata(sdkClient, provider.id)
+  journalReg = await registerJournallingEndpoint(sdkClient, provider.id, eventMetadata.event_code)
+  await sleep(60000) //or remove sleep simple wait few secs for the regisration been created 
+  journalling = await fetchJournallingPosition(sdkClient, journalReg.events_url)
+  await publishEvent(sdkClient, provider.id, eventMetadata.event_code)
+};
 ```
 
-3. Set environment varialbles
-run in terminal or use IDE 
-```bash
-export EVENTS_INGRESS_URL='https://eventsingress-stage.adobe.io'
-export EVENTS_BASE_URL='https://api-stage.adobe.io'
-```
+You could also delete event/registration/event providers using Event SDKs based on your need. 
 
+### Check your result on Console
+After using event SDK to create an event provider, you will see event provider registrated in console 
+as well as your jouranling end point or webhook 
+ ![event-provider](assets/event-provider.png)
 
-### Usage 
-Initialize the SDK
-```javascript
-const sdk = require('@adobe/aio-lib-events')
-
-async function sdkTest() {
-  //initialize sdk
-  const client = await sdk.init('<organization id>', 'x-api-key', '<valid auth token>', '<options>')
-}
-
-```
-Call methods using the initialized SDK
-```javascript
-const sdk = require('@adobe/aio-lib-events')
-
-async function sdkTest() {
-  // initialize sdk
-  const client = await sdk.init('<organization id>', 'x-api-key', '<valid auth token>', '<options>')
-
-  // call methods
-  try {
-    // get profiles by custom filters
-    const result = await client.getSomething({})
-    console.log(result)
-
-  } catch (e) {
-    console.error(e)
-  }
-}
-
-```
-
-Next lesson: [Explore custom event SDK](lesson3.md)
+Next lesson: [Ensure Events are published](lesson3.md)

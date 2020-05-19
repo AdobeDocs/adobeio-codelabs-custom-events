@@ -14,20 +14,16 @@
     "url": "/lessons/requirements",
     "duration": 5
   }, {
-    "title": "Lesson 1: Create a Console Integration",
+    "title": "Lesson 1: Create a Console Integration and Set up project",
     "url": "/lessons/lesson1",
     "duration": 5
   }, {
-    "title": "Lesson 2: Set up Project",
+    "title": "Lesson 2: Explore Custom Event SDK",
     "url": "/lessons/lesson2",
-    "duration": 5
-  }, {
-    "title": "Lesson 3: Explore Custom Event SDK",
-    "url": "/lessons/lesson3",
     "duration": 10
   }, {
-    "title": "Lesson 4: Ensure Events are Published",
-    "url": "/lessons/lesson4",
+    "title": "Lesson 3: Ensure Events are published",
+    "url": "/lessons/lesson3",
     "duration": 10
   }, {
     "title": "Well Done",

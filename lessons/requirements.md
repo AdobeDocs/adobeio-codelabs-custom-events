@@ -10,11 +10,6 @@ A pre-requisite of the codelab is to have access to [Developer console](https://
 
 ### Command Line Interface
 
-Install the [Project Firefly CLI](https://github.com/adobe/aio-cli) with: 
-```bash
-npm install -g @adobe/aio-cli
-```     
-
 Install the [Adobe I/O Events Lib](https://github.com/adobe/aio-lib-events)
 ```bash
 npm install @adobe/aio-lib-events
