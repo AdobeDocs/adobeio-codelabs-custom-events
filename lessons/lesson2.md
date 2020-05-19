@@ -8,7 +8,7 @@ Once you set up the project and credentials, below is a sample breakdown of how 
 
 By completing these steps, you will be able to see your event provider and journal or webhook registration on developer console as show below
 
-For your convenience,the project source code of the codelab is available [here](https://github.com/AdobeDocs/adobeio-codelabs-custom-event/tree/init-content/lessons/source/event-codelab-sample-code.zip)
+For your convenience,the project source code of the codelab is available [here](https://github.com/AdobeDocs/adobeio-codelabs-custom-event/blob/init-content/lessons/source/eventsdk-sample-code.zip)
 
 ### Register an event provider 
 To register an event provider, sample code like this 
