@@ -34,8 +34,12 @@ Add in the actions folder with `actions/slack/index.js` with below sample code
  var request = require('request');
 
 /* default slackwebhook and channel add yours here and replace the TODO below */
-var slackWebhook = "<your-slack-webhook>;
-var slackChannel = "<your-channel>";
+/* this is a sample action for how to receive event and sent a message to slack */
+var request = require('request');
+
+/* default slackwebhook and channel add yours here and replace the TODO below */
+var slackWebhook = "<your-webhook>";
+var slackChannel = "<your-slack>";
 
 async function main (params) {
   
