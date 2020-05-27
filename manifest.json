@@ -14,16 +14,20 @@
     "url": "/lessons/requirements",
     "duration": 5
   }, {
-    "title": "Lesson 1: Create a Console Integration and Set up project",
+    "title": "Lesson 1: Create a New Firefly App from Template",
     "url": "/lessons/lesson1",
-    "duration": 5
+    "duration": 10
   }, {
-    "title": "Lesson 2: Explore Custom Event SDK",
+    "title": "Lesson 2: Register the App as Event Provider",
     "url": "/lessons/lesson2",
     "duration": 10
   }, {
-    "title": "Lesson 3: Ensure Events are published",
+    "title": "Lesson 3: Fire Event using Event SDK",
     "url": "/lessons/lesson3",
+    "duration": 10
+  }, {
+    "title": "Lesson 4: Ensure Events are published",
+    "url": "/lessons/lesson4",
     "duration": 10
   }, {
     "title": "Well Done",

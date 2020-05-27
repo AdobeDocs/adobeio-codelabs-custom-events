@@ -1,6 +1,6 @@
 ## Well done
 
-You have successfully completed the codelab and learnt how to use custom event SDK.
+You have successfully completed the codelab and learnt how to use I/O event lib.
 
 Explore more features with custom event SDK
 [Custom event SDK](https://github.com/adobe/aio-lib-events/)
@@ -16,10 +16,10 @@ In addtion, more to read about Adobe I/O Event:
 
 You have learned: 
 
-* How to get started with I/O event SDK
-* Register event provider and fire event 
-* Use journaling API or webhook to consume events
+* How to start a project firefly app 
+* Register event provider using custom event
+* Testing the flow by emitting event from firefly app
+* Consuming the events in three options
 
 ### What's next ?
-
-Use case to use custom event 
+Check out other useful codelabs for your projects at [Adobe I/O Codelabs website](https://adobedocs.github.io/adobeio-codelabs).

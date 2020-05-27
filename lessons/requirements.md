@@ -1,21 +1,25 @@
 ## Requirements
 
-### Developer Console Access
-A pre-requisite of the codelab is to have access to [Developer console](https://console.adobe.io/home) 
-
 ### Pre-requisites
+This codelab is for anyone who are getting started with developing Firefly apps. There are a few prerequisites to get you started
 
-- [NodeJS](https://nodejs.org/en/download/) (at least v12). It should also install npm together. We recommend using [nvm](https://github.com/nvm-sh/nvm/blob/master/README.md) to manage NodeJS installation and versions on your machine.  
-- [Visual Studio Code (VSCode)](https://code.visualstudio.com/download) as the supported IDE for editor, debuggger, etc. You can use any other IDE as a code editor, but advanced usage e.g. debugger is not yet supported.
-
-### Command Line Interface
-
+* Project Firefly app
+This lab will be focus on Adobe I/O Events lib, for how to bootstrap Firefly app please see below or other codelab contents
+we woud assume that you already have an app developed and would like to leverage I/O event to build an event-driven flow
+  * [How to Get Access to Project Firefly](https://github.com/AdobeDocs/project-firefly/blob/master/overview/getting_access.md)
+  * [Setting up Your Environment](https://github.com/AdobeDocs/project-firefly/blob/master/getting_started/setup.md)
+  * [Creating your First Firefly App](https://github.com/AdobeDocs/project-firefly/blob/master/getting_started/first_app.md)
+  
+* Install Adobe I/O Events lib
 Install the [Adobe I/O Events Lib](https://github.com/adobe/aio-lib-events)
 ```bash
 npm install @adobe/aio-lib-events
 ```  
 ### Console Integration
 
-We assume you have acess to create integration on I/O Console with I/O Management Service needs to be enabled for the integration. This will help create the JWT token with adobeio_api scope which is required for all the API calls. 
+We assume you have acess to create integration on I/O Console with I/O Management Service needs to be enabled for the integration. This will help create the JWT token with adobeio_api scope which is required for all the API calls. [Adobe I/O Console](https://console.adobe.io/)
 
-Start the first lesson: [Create a Console Integration](/lessons/lesson1.md).
+### Custom Event Architecture Overview
+![webhook](assets/event.png)
+
+Start the first lesson: [Start the first lesson](/lessons/lesson1.md).
