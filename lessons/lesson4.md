@@ -7,7 +7,7 @@ There are three ways one can consume event
 
 
 ### Option 1: Using Journaling API to consume events 
-For enterprise developers, Adobe offers another way to consume events besides webhooks: journaling. The Adobe I/O Events Journaling API enables enterprise integrations to consume events according to their own cadence and process them in bulk. Unlike webhooks, no additional registration or other configuration is required; every enterprise integration that is registered for events is automatically enabled for journaling. Journaling data is retained for 7 days 
+For enterprise developers, Adobe offers journaling to consume events. The Adobe I/O Events Journaling API enables enterprise integrations to consume events according to their own cadence and process them in bulk. Unlike webhooks, no additional registration or other configuration is required; every enterprise integration that is registered for events is automatically enabled for journaling. Journaling data is retained for 7 days 
 
 After you fire event, you should be able to verify your event through journaling `UNIQUE API ENDPOINT` you get from console by follow below instruction
 [Journaling api](https://www.adobe.io/apis/experienceplatform/events/docs.html#!adobedocs/adobeio-events/master/intro/journaling_api.md)
@@ -134,7 +134,7 @@ For more details, follow the link below:
 
 ### Let's test it, and fire events
 With that,once you fire the event (in our codelab case, click the like button) you should see them appearing in above three options:
-- Through Adobe I/O Journaling API - in our demo case show up in webpage by using runtime action calling journaling API
+- Through Adobe I/O Journaling API 
 - Get slack message - through slack runtime action webhook
 - Through webhook URL
 

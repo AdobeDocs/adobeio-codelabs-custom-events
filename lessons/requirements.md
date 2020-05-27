@@ -4,6 +4,7 @@
 This codelab is for anyone who are getting started with developing Firefly apps. There are a few prerequisites to get you started
 
 * Project Firefly app
+
 This lab will be focus on Adobe I/O Events lib, for how to bootstrap Firefly app please see below or other codelab contents
 we woud assume that you already have an app developed and would like to leverage I/O event to build an event-driven flow
   * [How to Get Access to Project Firefly](https://github.com/AdobeDocs/project-firefly/blob/master/overview/getting_access.md)
@@ -11,6 +12,7 @@ we woud assume that you already have an app developed and would like to leverage
   * [Creating your First Firefly App](https://github.com/AdobeDocs/project-firefly/blob/master/getting_started/first_app.md)
   
 * Install Adobe I/O Events lib
+
 Install the [Adobe I/O Events Lib](https://github.com/adobe/aio-lib-events)
 ```bash
 npm install @adobe/aio-lib-events
