@@ -91,7 +91,7 @@ async function createProvider(sdkClient) {
 }
 ```
 For your convenience,the source code is available [here](https://github.com/AdobeDocs/adobeio-codelab-event-provider-registration)
-simple fill in the `.env` and run `npm start` 
+simply fill in the `.env` and run `npm start` 
 
 ### Check your result on Console
 After using event SDK to create an event provider, you will see event provider registrated in console 

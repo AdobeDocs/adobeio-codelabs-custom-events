@@ -35,6 +35,7 @@ The action to fire event is called `event` here, currently you app only has on a
 * It has some [default params](https://github.com/AdobeDocs/adobeio-runtime/blob/master/guides/creating_actions.md#working-with-parameters) such as `LOG_LEVEL`, `orgId`, `apiKey`, which are automatically available in the `params` object of the action without passing it to the action for every invocation. The `final` annotation set as `true` tells that those params are immutable.
 
 Now let's have a deeper look at the action's source code.
+also find source code[here](https://github.com/AdobeDocs/adobeio-codelab-customevent-demo/blob/master/actions/event/index.js)
 
 ```javascript
 /**
@@ -127,6 +128,7 @@ render () {
 }
 
 ```
+source code is [here](https://github.com/AdobeDocs/adobeio-codelab-customevent-demo/blob/master/web-src/src/App.js)
 
 ### Run and deploy the Firefly App
 You can run the firefly app locally by execute the below command with AIO CLI
@@ -143,5 +145,7 @@ aio app deploy
 This command will deploy to your namespace, you will get the URL like 
 https://<Runtime-namespace>.adobeio-static.net/<project-name>-0.0.1/index.html
 Now click the `like` button, you should be able to fire the event 
+
+For your reference, the solution code for lesson 3 and lesson 4 is [here](https://github.com/AdobeDocs/adobeio-codelab-customevent-demo) 
 
 Next lesson: [Lesson4](lesson4.md)
