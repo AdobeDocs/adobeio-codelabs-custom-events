@@ -143,7 +143,7 @@ Once you are satisfied with your app, you can deploy your app using the `namespa
 aio app deploy
 ```
 This command will deploy to your namespace, you will get the URL like 
-https://<Runtime-namespace>.adobeio-static.net/<project-name>-0.0.1/index.html
+`https://<Runtime-namespace>.adobeio-static.net/<project-name>-0.0.1/index.html`
 Now click the `like` button, you should be able to fire the event 
 
 For your reference, the solution code for lesson 3 and lesson 4 is [here](https://github.com/AdobeDocs/adobeio-codelab-customevent-demo) 

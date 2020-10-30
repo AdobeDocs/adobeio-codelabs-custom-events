@@ -37,14 +37,11 @@ After set up your integration and collect the informations, you can start set up
 {
   "name": "helloworld",
   "version": "1.0.0",
-  "repository": "https://github.com/adobe/aio-lib-events/",
   "description": "",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
   },
-  "author": "",
-  "license": "ISC",
   "dependencies": {
     "dotenv": "^8.1.0",
     "@js-joda/core": "^2.0.0",
