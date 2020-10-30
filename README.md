@@ -11,8 +11,8 @@ There are times when users may wish to register their own apps as event provider
 A specific demonstration to illustrate this use case has therefore been put together in this lab:
 * Jane build an app using project firefly and she would like to track the likes been clicked by reader
 * Jane registered her app as event provider using custom event (I/O event library) 
-* Joey could subscribed Events from Jane's cutom app event registration 
-* When reader click like or leave comment, Jane and Joe will all receive this event
+* Joe could subscribed events from Jane's custom app event registration 
+* When reader click like button or leave a comment, Jane and Joe will all receive event notification
 
 In this lab, you will learn how to:
 * Build a simple web app using project firefly framework

@@ -12,7 +12,7 @@ For enterprise developers, Adobe offers journaling to consume events. The Adobe 
 After you fire event, you should be able to verify your event through journaling `UNIQUE API ENDPOINT` you get from console by follow below instruction
 [Journaling api](https://www.adobe.io/apis/experienceplatform/events/docs.html#!adobedocs/adobeio-events/master/intro/journaling_api.md)
 You could use `Curl` command or `POSTMAN` to call this journaling `UNIQUE API ENDPOINT` to see your fired event.
-Or you can use [Custom event SDK](https://github.com/adobe/aio-lib-events/) to calling Journaling API to retrieve your event
+Or you can use [Custom event SDK](https://github.com/adobe/aio-lib-events/) to call Journaling API to retrieve your event
 
 
 ### Option 2: Using runtime action
