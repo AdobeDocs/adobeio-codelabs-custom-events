@@ -28,7 +28,7 @@ packages:
         annotations:
           final: true
 ```
-The action to fire event is called `event` here, currently you app only has on action `event` :
+The action to fire event is called `event` here, currently your app only has one action `event` :
 
 * Source code is at `actions/event/index.js`
 * It is a [web action](https://github.com/AdobeDocs/adobeio-runtime/blob/master/guides/creating_actions.md#invoking-web-actions)
@@ -36,7 +36,7 @@ The action to fire event is called `event` here, currently you app only has on a
 * It has some [default params](https://github.com/AdobeDocs/adobeio-runtime/blob/master/guides/creating_actions.md#working-with-parameters) such as `LOG_LEVEL`, `orgId`, `apiKey`, which are automatically available in the `params` object of the action without passing it to the action for every invocation. The `final` annotation set as `true` tells that those params are immutable.
 
 Now let's have a deeper look at the action's source code.
-also find source code [here](https://github.com/AdobeDocs/adobeio-codelab-customevent-demo/blob/master/actions/event/index.js)
+Also one can find source code [here](https://github.com/AdobeDocs/adobeio-codelab-customevent-demo/blob/master/actions/event/index.js)
 
 ```javascript
 /**
@@ -104,7 +104,7 @@ What happens here is that the action exposes a `main` function, which accepts a 
 
 Next, let's see how the web UI communicates with the backend. All web assets are placed in the web-src folder.
 Beside a few auto-generated files that are useful for running your app on Adobe Experience Cloud (ExC) Shell, `App.js` is the extension point of your UI.
-By default, it contains a form that lists all available backend actions, allows you to select the action to be invoke
+By default, it contains a form that lists all available backend actions, allows you to select the action to be invoke.
 ```javascript
 render () {
   return (

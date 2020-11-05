@@ -3,7 +3,7 @@
 ### Create a Console Integration and Set up Project
 In order to use custom event SDK, you need to get below informtion from console integration.
 
-- `IMS Org Id`: The Organization Id for which the provider, event metadata, etc are to be created which can be obtained using the Console or Transporter API.
+- `IMS Org Id`: The Organization Id in which the provider, event metadata, etc are to be created. 
 - `API key`: The API Key ( client id ) for the integration ( project workspace ) 
 - `JWT Token`: Note that I/O Management Service needs to be enabled for the integration
 - `Config.zip`: Config file downloaded from console including private key and certificate_pub.crt
@@ -15,13 +15,13 @@ In order to use custom event SDK, you need to get below informtion from console 
 ![add-api](assets/add-api.png)
 
 3. Follow the steps to configure API, create a new service account (JWT) credential, `config.zip` will be
-downloaed automatically, you will need the private key to generate JWT token 
+downloaded automatically, you will need the private key to generate JWT token.
 
-4. Go to `project overview` tab, download project metadata from below `download` button and get the needed info from this `.json`file, or you can also get these info from `.aio` file in the project folder.
+4. Go to `project overview` tab, download project metadata from below `Download` button and get the needed info from this `.json`file, or you can also get these info from `.aio` file in the project folder.
 ![download](assets/download.png)
 ![projectjson](assets/project-json.png)
 
-5. Get credential details information, generate JWT 
+5. Get credential details, generate JWT 
 ![console](assets/console.png)
 
 
@@ -51,12 +51,12 @@ After set up your integration and collect the informations, you can start set up
 
 2. Use CLI to create provider, eventmetadata and webhook registration
 
-Now we can start using CLI to create provider, eventmetadata and webhook registration
-first you need to install the Adobe I/O Events CLI Plugin
+Now we can start using CLI to create provider, eventmetadata and webhook registration.
+First you need to install the Adobe I/O Events CLI Plugin:
 ```bash
 npm install -g @adobe/aio-cli-plugin-events
 ```
-after installation, run the below commands:
+After installation, run the below commands:
 
 ```bash
 aio console org list
@@ -70,25 +70,25 @@ aio event => this will list all the commands for events.
 ```
 
 ### Register the Event Provider
-After select the right org, project and workspace, now we start create register the event provider
+After select the right org, project and workspace, now we start to create registration 
 ```bash
 aio event provider create
 ```
-Fill in the information, and in the terminal you will see the provider id after successfully create provider, copy <provider id> and then next step:
+Fill in the information, and in the terminal you will see the provider id after successfully create provider,copy the `provider id` for next steps, now we can create eventmetadata:
 ```bash
 aio event eventmetadata create <provider id>
 ```
-CLI will promote you to the question asking you to input the `label` and `event code`for the eventmetadata
-Now you can start create registration by 
+CLI will promote you to the questions asking you to input the `label` and `event code`for the eventmetadata.
+Now you can create registration by:
 ```bash
 aio event registration create 
 ```
-It will show you a sample of a file in JSON format with the information to create a new Event Registration
-which you can copy, fill in details and use it. 
+It will show you a sample of JSON format with the information to create a new event registration
+which you can copy, create your `.json` file and fill in details and use it. 
 
-Now with all that we have finished register the event provider
+Now with all that we have finished registering the event provider.
 
-Note, another option to register an event provider, is to run javascript code
+Note: another option to register an event provider is to run javascript code
 For your convenience,the source code is available [here](https://github.com/AdobeDocs/adobeio-codelab-event-provider-registration)
 simply fill in the `.env` and run `npm start` 
 
