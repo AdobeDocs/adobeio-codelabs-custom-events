@@ -19,9 +19,9 @@ npm install @adobe/aio-lib-events
 ```  
 ### Console Integration
 
-We assume you have acess to create integration on I/O Console with I/O Management Service needs to be enabled for the integration. This will help create the JWT token with adobeio_api scope which is required for all the API calls. [Adobe I/O Console](https://console.adobe.io/)
+We assume you have access to create integration on [Adobe I/O Console](https://console.adobe.io/) with I/O Management Service needs to be enabled for the integration. This will help create the JWT token with adobeio_api scope which is required for all the API calls.
 
 ### Custom Event Architecture Overview
 ![webhook](assets/event.png)
 
-Start the first lesson: [Start the first lesson](/lessons/lesson1.md).
+[Start the first lesson](/lessons/lesson1.md).

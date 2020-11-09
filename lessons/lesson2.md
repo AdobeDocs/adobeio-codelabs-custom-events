@@ -28,28 +28,9 @@ downloaded automatically, you will need the private key to generate JWT token.
 
 ### Set up project and use CLI to register the app as event provider
 After set up your integration and collect the informations, you can start set up your project 
-* Add `package.json` it contains the list of dependencies, version, reproducible builds, etc.
 * Use CLI to create provider, eventmetadata and webhook registration
 
-1. `package.json` sample file
-```javascript
-{
-  "name": "helloworld",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "start": "node index.js"
-  },
-  "dependencies": {
-    "dotenv": "^8.1.0",
-    "@js-joda/core": "^2.0.0",
-    "@adobe/aio-lib-events": "1.0.0"
-  }
-}
-```
-
-2. Use CLI to create provider, eventmetadata and webhook registration
+#### Use CLI to create provider, eventmetadata and webhook registration
 
 Now we can start using CLI to create provider, eventmetadata and webhook registration.
 First you need to install the Adobe I/O Events CLI Plugin:

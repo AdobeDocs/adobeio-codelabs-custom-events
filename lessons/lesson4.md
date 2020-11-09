@@ -1,4 +1,4 @@
-## Lesson 4: Ensure Events are published
+## Lesson 4: Consume Events
 
 There are three ways one can consume event:
 * Using Journaling API 
