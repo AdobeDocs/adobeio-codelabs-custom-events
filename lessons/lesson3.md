@@ -3,10 +3,18 @@
 ### Fire Event
 Once you set up the app and register the event provider, now you can make user click like button as fire event by adding code to your project firefly app
 
+When you run below command 
+```bash
+aio app init
+```
+It provide you with the template of `publish event` to provide a way to convert an input json to cloud event and publish to events.
+![event-provider](assets/publish-event-cli.png)
+
+You can choose to use this template code at `/actions/publish-events/index.js` or create your own code.
 Within the newly created app, Firstly, set up `package.json` with the lists of dependencies, version, etc. 
 Then `manifest.yml` lists the declaration of serverless actions including name, source files, runtime kind, default params, annotations, and so on.
 
-Note: here put in the `providerId` and `eventCode`from lesson 2 and `orgId`, `apiKey`, `accessToken`from console integration from lesson 1
+Note: here put in the `providerId` and `eventCode`from lesson 2 and `orgId`, `apiKey`, `accessToken`from console integration from lesson 2
 
 Below is a sample `manifest.yml` 
 ```javascript
