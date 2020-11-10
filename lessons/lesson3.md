@@ -52,8 +52,7 @@ Now let's start to take a deeper look the tempalte code:
 * The action will be run in the `nodejs:10` [runtime container on I/O Runtime](https://github.com/AdobeDocs/adobeio-runtime/blob/master/reference/runtimes.md)
 * It has some [default params](https://github.com/AdobeDocs/adobeio-runtime/blob/master/guides/creating_actions.md#working-with-parameters) such as `LOG_LEVEL`, `orgId`, `apiKey`, which are automatically available in the `params` object of the action without passing it to the action for every invocation. The `final` annotation set as `true` tells that those params are immutable.
 
-Now let's have a deeper look at the action's source code.
-Also one can find source code [here](https://github.com/AdobeDocs/adobeio-codelab-customevent-demo/blob/master/actions/event/index.js)
+Now let's have a deeper look at the action's source code from template:
 
 ```javascript
 /*
@@ -157,15 +156,15 @@ You can run the firefly app locally by execute the below command with AIO CLI
 ```bash
 aio app run
 ```
-This command will deploy the `event` action into I/O Runtime, and spins up a local instance for the UI. When the app is up and running, it can be seen at `https://localhost:9080`. You should be able to see the UI of the app and it is also possible to access the app from ExC Shell: `https://experience.adobe.com/?devMode=true#/apps/?localDevUrl=https://localhost:9080`. You might be asked to log in using your Adobe ID.  When the website is opened, the UI is almost similar to what you see when deployed on localhost, except the ExC Shell on top of the UI.
+This command will deploy the `publish-event` action into I/O Runtime, and spins up a local instance for the UI. When the app is up and running, it can be seen at `https://localhost:9080`. You should be able to see the UI of the app and it is also possible to access the app from ExC Shell: `https://experience.adobe.com/?devMode=true#/apps/?localDevUrl=https://localhost:9080`. You might be asked to log in using your Adobe ID.  When the website is opened, the UI is almost similar to what you see when deployed on localhost, except the ExC Shell on top of the UI.
 
-Once you are satisfied with your app, you can deploy your app using the `namespace` and `auth` you get from console integration, execute the below command with AIO CLI
+Once you are satisfied with your app, you can deploy your app by run below command:
 ```bash
 aio app deploy
 ```
 This command will deploy the app to your namespace, you will get the URL like 
 `https://<Runtime-namespace>.adobeio-static.net/<project-name>-0.0.1/index.html`
-Now click the `like` button, you should be able to fire the event 
+Now if you modify the UI code to make click the `like` button to trigger the event, you should be able to fire the event 
 
 For your reference, the solution code for lesson 3 and lesson 4 is [here](https://github.com/AdobeDocs/adobeio-samples-custom-events) 
 
