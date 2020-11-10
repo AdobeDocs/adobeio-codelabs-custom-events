@@ -12,9 +12,9 @@ It provide you with the template of `publish event` to provide a way to convert 
 
 You can choose to use this template code at `/actions/publish-events/index.js` or create your own code.
 Within the newly created app, Firstly, set up `package.json` with the lists of dependencies, version, etc. 
-Then `manifest.yml` lists the declaration of serverless actions including name, source files, runtime kind, default params, annotations, and so on.
+Then `manifest.yml` lists the declaration of serverless actions including name, source files, runtime kind, default params, annotations, and so on. In this lesson, we will choose to use this template to modify the code to our need.
 
-Note: here put in the `providerId` and `eventCode`from lesson 2 and `orgId`, `apiKey`, `accessToken`from console integration from lesson 2
+Note: here put in the `providerId`,`apiKey` and `eventCode`from lesson 2 in the `manifest.yml` and `orgId`,`accessToken`can be passed through `headers`
 
 Below is a sample `manifest.yml` 
 ```javascript
@@ -22,23 +22,32 @@ packages:
   __APP_PACKAGE__:
     license: Apache-2.0
     actions:
-      event:
-        function: actions/event/index.js
+      <project-name>:
+        function: actions/<project-name>/index.js
         web: 'yes'
-        runtime: 'nodejs:10'
+        runtime: 'nodejs:12'
         inputs:
           LOG_LEVEL: debug
-          orgId: <YOUR-ORG-ID>
-          apiKey:  <YOUR-apiKey>
-          accessToken: <YOUR-accessToken>
-          providerId: <YOUR-providerId>
-          eventCode: <YOUR-eventCode>
         annotations:
+          require-adobe-auth: true
+          final: true
+      publish-events:
+        function: actions/publish-events/index.js
+        web: 'yes'
+        runtime: 'nodejs:12'
+        inputs:
+          LOG_LEVEL: debug
+          apiKey: <Your-SERVICE_API_KEY>
+          providerId: <YOUR-PROVIDER_ID>
+          eventCode: <YOUR-EVENT_CODE>
+        annotations:
+          require-adobe-auth: true
           final: true
 ```
-The action to fire event is called `event` here, currently your app only has one action `event` :
 
-* Source code is at `actions/event/index.js`
+Now let's start to take a deeper look the tempalte code: 
+
+* Source code is at `actions/publish-events/index.js`
 * It is a [web action](https://github.com/AdobeDocs/adobeio-runtime/blob/master/guides/creating_actions.md#invoking-web-actions)
 * The action will be run in the `nodejs:10` [runtime container on I/O Runtime](https://github.com/AdobeDocs/adobeio-runtime/blob/master/reference/runtimes.md)
 * It has some [default params](https://github.com/AdobeDocs/adobeio-runtime/blob/master/guides/creating_actions.md#working-with-parameters) such as `LOG_LEVEL`, `orgId`, `apiKey`, which are automatically available in the `params` object of the action without passing it to the action for every invocation. The `final` annotation set as `true` tells that those params are immutable.
@@ -47,96 +56,101 @@ Now let's have a deeper look at the action's source code.
 Also one can find source code [here](https://github.com/AdobeDocs/adobeio-codelab-customevent-demo/blob/master/actions/event/index.js)
 
 ```javascript
+/*
+* <license header>
+*/
+
 /**
- * This action when user click the like button, fire an event
+ * This is a sample action showcasing how to create a cloud event and publish to I/O Events
+ *
+ * Note:
+ * You might want to disable authentication and authorization checks against Adobe Identity Management System for a generic action. In that case:
+ *   - Remove the require-adobe-auth annotation for this action in the manifest.yml of your application
+ *   - Remove the Authorization header from the array passed in checkMissingRequestInputs
+ *   - The two steps above imply that every client knowing the URL to this deployed action will be able to invoke it without any authentication and authorization checks against Adobe Identity Management System
+ *   - Make sure to validate these changes against your security requirements before deploying the action
  */
 
-const { Core } = require('@adobe/aio-sdk')
-const fetch = require('node-fetch')
-const ZonedDateTime = require('@js-joda/core').ZonedDateTime
-const ZoneOffset = require('@js-joda/core').ZoneOffset
-const EventsSDK = require('@adobe/aio-lib-events')
 
-const httpOptions = { retries: 3 }
+const { Core, Events } = require('@adobe/aio-sdk')
+const uuid = require('uuid')
+const cloudEventV1 = require('cloudevents-sdk/v1')
+const { errorResponse, getBearerToken, stringParameters, checkMissingRequestInputs } = require('../utils')
 
-async function publishEvent(sdkClient, providerId, eventCode) {
-  // fire event
-  console.log(eventCode)
-  console.log(providerId)
-  const publish = await sdkClient.publishEvent({
-    id: 'like-' + Math.round(Math.random() * 100000),
-    source: 'urn:uuid:' + providerId,
-    time: ZonedDateTime.now(ZoneOffset.UTC).toString(),
-    type: eventCode,
-    data: {
-      text: 'you got one like'
-    }
-  })
-  return publish
-}
-
+// main function that will be executed by Adobe I/O Runtime
 async function main (params) {
   // create a Logger
-  const myAppLogger = Core.Logger('main', { level: params.LOG_LEVEL })
-  // 'info' is the default level if not set
-  myAppLogger.info('Calling the main action')
-
-  // log levels are cumulative: 'debug' will include 'info' as well (levels are in order of verbosity: error, warn, info, verbose, debug, silly)
-  myAppLogger.debug(`params: ${JSON.stringify(params, null, 2)}`) // careful to not log any secrets!
+  const logger = Core.Logger('main', { level: params.LOG_LEVEL || 'info' })
 
   try {
-    let sdkClient = await EventsSDK.init(params.orgId, params.apiKey, params.accessToken, httpOptions)
+    // 'info' is the default level if not set
+    logger.info('Calling the main action')
 
-    event_ret = await publishEvent(sdkClient, params.providerId, params.eventCode)
-    var returnObject = {
-      statusCode: 200,
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: event_ret
-    };
+    // log parameters, only if params.LOG_LEVEL === 'debug'
+    logger.debug(stringParameters(params))
 
-    return returnObject
-  } catch (error) {
-    myAppLogger.error(error)
-    return {
-      statusCode: 500,
-      body: { error: 'server error!' }
+    // check for missing request input parameters and headers
+    const requiredParams = ['apiKey', 'providerId', 'eventCode', 'payload']
+    const requiredHeaders = ['Authorization', 'x-gw-ims-org-id']
+    const errorMessage = checkMissingRequestInputs(params, requiredParams, requiredHeaders)
+    if (errorMessage) {
+      // return and log client errors
+      return errorResponse(400, errorMessage, logger)
     }
+
+    // extract the user Bearer token from the Authorization header
+    const token = getBearerToken(params)
+
+    
+    // initialize the client
+    const orgId = params.__ow_headers['x-gw-ims-org-id']
+    const eventsClient = await Events.init(orgId, params.apiKey, token)
+
+    // Create cloud event for the given payload
+    const cloudEvent = createCloudEvent(params.providerId, params.eventCode, params.payload)
+
+    // Publish to I/O Events
+    const published = await eventsClient.publishEvent(cloudEvent)
+    let statusCode = 200
+    if (published === 'OK') {
+      logger.info('Published successfully to I/O Events')
+    } else if (published === undefined) {
+      logger.info('Published to I/O Events but there were not interested registrations')
+      statusCode = 204
+    }
+    const response = {
+      statusCode: statusCode,
+    }
+
+    // log the response status code
+    logger.info(`${response.statusCode}: successful request`)
+    return response
+  } catch (error) {
+    // log any server errors
+    logger.error(error)
+    // return with 500
+    return errorResponse(500, 'server error', logger)
   }
 }
 
+function createCloudEvent(providerId, eventCode, payload) {
+  let cloudevent = cloudEventV1.event()
+    .data(payload)
+    .source('urn:uuid:' + providerId)
+    .type(eventCode)
+    .id(uuid.v4())
+  return cloudevent.format()
+}
 exports.main = main
-```
-What happens here is that the action exposes a `main` function, which accepts a list of params from the client. It checks the required params for using the `EventsSDK`. 
-
-Next, let's see how the web UI communicates with the backend. All web assets are placed in the web-src folder.
-Beside a few auto-generated files that are useful for running your app on Adobe Experience Cloud (ExC) Shell, `App.js` is the extension point of your UI.
-By default, it contains a form that lists all available backend actions, allows you to select the action to be invoke.
-```javascript
-render () {
-  return (
-    // ErrorBoundary wraps child components to handle eventual rendering errors
-    <ErrorBoundary onError={this.onError} FallbackComponent={this.fallbackComponent} >
-    <section class="banner style1 orient-left content-align-left image-position-right fullscreen onload-image-fade-in onload-content-fade-right">
-        <div class="content">
-            <h1>Basel</h1>
-              <p class="major">A city in northwestern Switzerland on the river Rhine. Basel is Switzerland's third-most-populous city. The city is known for its many internationally renowned museums, ranging from the Kunstmuseum, the first collection of art accessible to the public in Europe (1661) and the largest museum of art in the whole of Switzerland.</p>
-              <ul class="action">
-                <li><a href={actions.event}>Like</a></li>
-              </ul>
-        </div>
-        <div class="image">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Basel_-_M%C3%BCnsterpfalz1.jpg/2560px-Basel_-_M%C3%BCnsterpfalz1.jpg" alt="" />
-        </div>
-      </section>
-    </ErrorBoundary>
-  )
-  }
-}
 
 ```
-source code is [here](https://github.com/AdobeDocs/adobeio-samples-custom-events/blob/master/web-src/src/App.js)
+What happens here is that the action exposes a `main` function, which accepts a list of params from the client. It checks the required params for using the `cloudevents-sdk`. 
+
+Next, let's see how the web UI communicates with the backend. In `web-src/src/components` we already provide a template of UI.
+After you select the Actions to `publish-events` and then click the `Invoke` button, it will invokes the action. In the action, it will send out the event. When you invoke, you could also add actual params, in this example, we add `{"payload": "you got a like"}`, in the webhook result, you will see the payload showed in `{"data": "you got a like"}`.
+![templateui](assets/template-ui.png)
+![eventresult](assets/event-webhook-result.png)
+
 
 ### Run and Deploy the Firefly App
 You can run the firefly app locally by execute the below command with AIO CLI
