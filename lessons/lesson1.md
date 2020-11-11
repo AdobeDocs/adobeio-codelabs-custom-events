@@ -31,10 +31,13 @@ aio app init <Your-project-name>
 You're presented with a few options, first question is "Which Adobe I/O App features do you want to enable for this project?" In this lab, we keep all of them. The second question is "Which type of sample actions do you want to create?" in this lab, we will select `Generic`, please remember to keep the `publish-event` template.
 Name your action, then you have created your project firefly template. Now you can use this template to start your app
 
+![event-provider](assets/publish-event-cli.png)
+
 In this lab, I will create a webpage using this generic template. if this is your first time to use project firefly, follow below
 * [Creating your First Firefly App](https://github.com/AdobeDocs/project-firefly/blob/master/getting_started/first_app.md)
 
 In our use case, we will develop a simple website with the `like` button. after you finished code development and deployed using `aio app deploy` you will be able to see your app like below
+
 ![webpage](assets/webpage.png)
 
 In next lesson, we will show how to use custom event to register this app as event provider and click the like button 

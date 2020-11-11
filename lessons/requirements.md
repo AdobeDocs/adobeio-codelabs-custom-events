@@ -10,10 +10,9 @@ we woud assume that you already have an app developed and would like to leverage
   * [How to Get Access to Project Firefly](https://github.com/AdobeDocs/project-firefly/blob/master/overview/getting_access.md)
   * [Setting up Your Environment](https://github.com/AdobeDocs/project-firefly/blob/master/getting_started/setup.md)
   * [Creating your First Firefly App](https://github.com/AdobeDocs/project-firefly/blob/master/getting_started/first_app.md)
-  
-* Install Adobe I/O Events lib
+  * [Adobe I/O Events CLI Plugin](https://github.com/adobe/aio-cli-plugin-events)
 
-To install the [Adobe I/O Events CLI Plugin](https://github.com/adobe/aio-cli-plugin-events)
+To install the Adobe I/O Events CLI Plugin, simply run below: 
 ```bash
 npm install -g @adobe/aio-cli-plugin-events
 ```  

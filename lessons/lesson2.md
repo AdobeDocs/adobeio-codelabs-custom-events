@@ -2,8 +2,7 @@
 
 After the you have your app ready now you can register the app as event provider. 
 ### Set up project and use CLI to register the app as event provider
-After set up your integration and collect the informations, you can start set up your project 
-* Use CLI to create provider, eventmetadata and webhook registration
+After set up your integration and collect the informations, you can start set up your event provider
 
 #### Use CLI to create provider, eventmetadata and webhook registration
 
@@ -22,7 +21,7 @@ aio event => this will list all the commands for events.
 ```
 
 ### Register the Event Provider
-After select the right org, project and workspace, now we start to create registration 
+After select the org, project and workspace, now we start to create registration 
 ```bash
 aio event provider create
 ```
@@ -49,6 +48,6 @@ After using event SDK to create an event provider, you will see event provider r
 as well as your jouranling end point
  ![event-provider](assets/event-provider.png)
 
-Note: You will need your `event provider id` from this lesson to fire event in next steps:
+Note: You will need your `event provider id` and `event code` from this lesson to fire event in next steps:
 
 Next lesson: [Lesson3](lesson3.md)

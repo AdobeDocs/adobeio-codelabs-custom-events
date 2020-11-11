@@ -3,13 +3,6 @@
 ### Fire Event
 Once you set up the app and register the event provider, now you can make user click like button as fire event by adding code to your project firefly app, this lesson will walk through the code in publish-event, test it on the UI with "Invoke" button and see the success response
 
-When you run below command 
-```bash
-aio app init
-```
-It provide you with the template of `publish event` to provide a way to convert an input json to cloud event and publish to events.
-![event-provider](assets/publish-event-cli.png)
-
 You can choose to use this template code at `/actions/publish-events/index.js` or create your own code.
 Within the newly created app, Firstly, set up `package.json` with the lists of dependencies, version, etc. 
 Then `manifest.yml` lists the declaration of serverless actions including name, source files, runtime kind, default params, annotations, and so on. In this lesson, we will choose to use this template to modify the code to our need.
@@ -147,7 +140,9 @@ What happens here is that the action exposes a `main` function, which accepts a 
 
 Next, let's see how the web UI communicates with the backend. In `web-src/src/components` we already provide a template of UI.
 After you select the Actions to `publish-events` and then click the `Invoke` button, it will invokes the action. In the action, it will send out the event. When you invoke, you could also add actual params, in this example, we add `{"payload": "you got a like"}`, in the webhook result, you will see the payload showed in `{"data": "you got a like"}`.
+
 ![templateui](assets/template-ui.png)
+
 ![eventresult](assets/event-webhook-result.png)
 
 
