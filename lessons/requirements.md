@@ -13,9 +13,9 @@ we woud assume that you already have an app developed and would like to leverage
   
 * Install Adobe I/O Events lib
 
-To install the [Adobe I/O Events Lib](https://github.com/adobe/aio-lib-events)
+To install the [Adobe I/O Events CLI Plugin](https://github.com/adobe/aio-cli-plugin-events)
 ```bash
-npm install @adobe/aio-lib-events
+npm install -g @adobe/aio-cli-plugin-events
 ```  
 ### Console Integration
 
