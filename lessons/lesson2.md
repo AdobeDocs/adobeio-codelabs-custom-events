@@ -1,26 +1,6 @@
 ## Lesson 2: Register the App as Event Provider 
 
-### Create a Console Integration and Set up Project
-In order to use custom event SDK, you need to get below informtion from console integration.
-
-- `IMS Org Id`: The Organization Id in which the provider, event metadata, etc are to be created. 
-- `API key`: The API Key ( client id ) for the integration ( project workspace ) 
-- `JWT Token`: Note that I/O Management Service needs to be enabled for the integration
-- `Config.zip`: Config file downloaded from console including private key and certificate_pub.crt
-- `project.json`: for instance, `projectname-orgId-Production.json` file downloaded from console 
-
-
-1. Navigate to Adobe I/O console at [https://console.adobe.io](https://console.adobe.io) in your browser and create a project or using your exsiting project 
-
-2. Select `Add to Project` -> `Add an API` -> `Adobe Services` -> `I/O managemenet API`
-![add-api](assets/add-api.png)
-
-3. Follow the steps to configure API, create a new service account (JWT) credential, `config.zip` will be
-downloaded automatically, you will need the private key to generate JWT token.
-
-4. Go to `project overview` tab, download project metadata from below `Download` button and get the needed info from this `.json`file, or you can also get these info from `.aio` file in the project folder.
-
-
+After the you have your app ready now you can register the app as event provider. 
 ### Set up project and use CLI to register the app as event provider
 After set up your integration and collect the informations, you can start set up your project 
 * Use CLI to create provider, eventmetadata and webhook registration
