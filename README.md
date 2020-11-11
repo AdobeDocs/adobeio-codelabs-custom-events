@@ -18,8 +18,6 @@ In this lab, you will learn how to:
 * Build a simple web app using project firefly framework
 * Enable event-driven workflows using Adobe I/O event library with ease 
 
-For your convenience, we provide a complete solution of this codelab at [here](https://github.com/AdobeDocs/adobeio-samples-custom-events)
-
 Next: [Requirements](/lessons/requirements.md).
 
 

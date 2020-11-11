@@ -1,7 +1,7 @@
 ## Lesson 3: Fire Event using Event SDK
 
 ### Fire Event
-Once you set up the app and register the event provider, now you can make user click like button as fire event by adding code to your project firefly app
+Once you set up the app and register the event provider, now you can make user click like button as fire event by adding code to your project firefly app, this lesson will walk through the code in publish-event, test it on the UI with "Invoke" button and see the success response
 
 When you run below command 
 ```bash
@@ -49,8 +49,8 @@ Now let's start to take a deeper look the tempalte code:
 
 * Source code is at `actions/publish-events/index.js`
 * It is a [web action](https://github.com/AdobeDocs/adobeio-runtime/blob/master/guides/creating_actions.md#invoking-web-actions)
-* The action will be run in the `nodejs:10` [runtime container on I/O Runtime](https://github.com/AdobeDocs/adobeio-runtime/blob/master/reference/runtimes.md)
-* It has some [default params](https://github.com/AdobeDocs/adobeio-runtime/blob/master/guides/creating_actions.md#working-with-parameters) such as `LOG_LEVEL`, `orgId`, `apiKey`, which are automatically available in the `params` object of the action without passing it to the action for every invocation. The `final` annotation set as `true` tells that those params are immutable.
+* The action will be run in the `nodejs:12` [runtime container on I/O Runtime](https://github.com/AdobeDocs/adobeio-runtime/blob/master/reference/runtimes.md)
+* It has some [default params](https://github.com/AdobeDocs/adobeio-runtime/blob/master/guides/creating_actions.md#working-with-parameters) such as `LOG_LEVEL`, you can pass in your `params` like `apiKey`, `provideId` and `eventCode`from `manifest.yml` 
 
 Now let's have a deeper look at the action's source code from template:
 
@@ -165,7 +165,5 @@ aio app deploy
 This command will deploy the app to your namespace, you will get the URL like 
 `https://<Runtime-namespace>.adobeio-static.net/<project-name>-0.0.1/index.html`
 Now if you modify the UI code to make click the `like` button to trigger the event, you should be able to fire the event 
-
-For your reference, the solution code for lesson 3 and lesson 4 is [here](https://github.com/AdobeDocs/adobeio-samples-custom-events) 
 
 Next lesson: [Lesson4](lesson4.md)

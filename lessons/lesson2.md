@@ -11,6 +11,7 @@ In order to use custom event SDK, you need to get below informtion from console 
 
 
 1. Navigate to Adobe I/O console at [https://console.adobe.io](https://console.adobe.io) in your browser and create a project or using your exsiting project 
+
 2. Select `Add to Project` -> `Add an API` -> `Adobe Services` -> `I/O managemenet API`
 ![add-api](assets/add-api.png)
 
@@ -18,12 +19,6 @@ In order to use custom event SDK, you need to get below informtion from console 
 downloaded automatically, you will need the private key to generate JWT token.
 
 4. Go to `project overview` tab, download project metadata from below `Download` button and get the needed info from this `.json`file, or you can also get these info from `.aio` file in the project folder.
-![download](assets/download.png)
-![projectjson](assets/project-json.png)
-
-5. Get credential details, generate JWT 
-![console](assets/console.png)
-
 
 
 ### Set up project and use CLI to register the app as event provider
@@ -33,11 +28,7 @@ After set up your integration and collect the informations, you can start set up
 #### Use CLI to create provider, eventmetadata and webhook registration
 
 Now we can start using CLI to create provider, eventmetadata and webhook registration.
-First you need to install the Adobe I/O Events CLI Plugin:
-```bash
-npm install -g @adobe/aio-cli-plugin-events
-```
-After installation, run the below commands:
+Make sure you install the Adobe I/O Events CLI Plugin, then run the below commands:
 
 ```bash
 aio console org list
