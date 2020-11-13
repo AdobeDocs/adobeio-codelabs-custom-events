@@ -1,129 +1,53 @@
-## Lesson 2: Write your app
+## Lesson 2: Register the App as Event Provider 
 
-# H1
-## H2
-### H3
-#### H4
-##### H5
-###### H6
+### Set up project and use CLI to register the app as event provider
+After set up your integration and collect the informations, you can start set up your event provider
 
-Emphasis, aka italics, with *asterisks* or _underscores_.
+#### Use CLI to create provider, eventmetadata and webhook registration
 
-Strong emphasis, aka bold, with **asterisks** or __underscores__.
+Now we can start using CLI to create provider, eventmetadata and webhook registration.
+Make sure you install the Adobe I/O Events CLI Plugin, then run the below commands:
 
-Combined emphasis with **asterisks and _underscores_**.
-
-Strikethrough uses two tildes. ~~Scratch this.~~
-
-1. First ordered list item
-2. Another item
-⋅⋅* Unordered sub-list. 
-1. Actual numbers don't matter, just that it's a number
-⋅⋅1. Ordered sub-list
-4. And another item.
-
-⋅⋅⋅You can have properly indented paragraphs within list items. Notice the blank line above, and the leading spaces (at least one, but we'll use three here to also align the raw Markdown).
-
-⋅⋅⋅To have a line break without a paragraph, you will need to use two trailing spaces.⋅⋅
-⋅⋅⋅Note that this line is separate, but within the same paragraph.⋅⋅
-⋅⋅⋅(This is contrary to the typical GFM line break behaviour, where trailing spaces are not required.)
-
-* Unordered list can use asterisks
-- Or minuses
-+ Or pluses
-
-[I'm an inline-style link](https://www.google.com)
-
-[I'm an inline-style link with title](https://www.google.com "Google's Homepage")
-
-[I'm a reference-style link][Arbitrary case-insensitive reference text]
-
-[I'm a relative reference to a repository file](../blob/master/LICENSE)
-
-[You can use numbers for reference-style link definitions][1]
-
-Or leave it empty and use the [link text itself].
-
-URLs and URLs in angle brackets will automatically get turned into links. 
-http://www.example.com or <http://www.example.com> and sometimes 
-example.com (but not on Github, for example).
-
-Some text to show that the reference links can follow later.
-
-[arbitrary case-insensitive reference text]: https://www.mozilla.org
-[1]: http://slashdot.org
-[link text itself]: http://www.reddit.com
-
-![adobe](assets/adobe.png)
-
-Inline `code` has `back-ticks around` it.
-
-```javascript
-var s = "JavaScript syntax highlighting";
-alert(s);
-```
- 
-```python
-s = "Python syntax highlighting"
-print s
-```
- 
-```
-No language indicated, so no syntax highlighting. 
-But let's throw in a <b>tag</b>.
+```bash
+aio console org list
+aio console org select <orgId>
+aio console project list
+aio console project select <projectid>
+aio console workspace list
+aio console workspace select <wkspId>
+aio app use
+aio event => this will list all the commands for events.
 ```
 
-Colons can be used to align columns.
+### Register the Event Provider
+After select the org, project and workspace, now we start to create registration 
+```bash
+aio event provider create
+```
+Fill in the information, and in the terminal you will see the provider id after successfully create provider,copy the `provider id` for next steps, now we can create eventmetadata:
+```bash
+aio event eventmetadata create <provider id>
+```
+CLI will promote you to the questions asking you to input the `label` and `event code`for the eventmetadata.
+Now you can create registration by:
+```bash
+aio event registration create 
+```
+It will show you a sample of JSON format with the information to create a new event registration
+which you can copy, create your `.json` file and fill in details and use it. 
 
-| Tables        | Are           | Cool  |
-| ------------- |:-------------:| -----:|
-| col 3 is      | right-aligned | $1600 |
-| col 2 is      | centered      |   $12 |
-| zebra stripes | are neat      |    $1 |
+Now with all that we have finished registering the event provider.
 
-There must be at least 3 dashes separating each header cell.
-The outer pipes (|) are optional, and you don't need to make the 
-raw Markdown line up prettily. You can also use inline Markdown.
+Note: another option to register an event provider is to run javascript code
+For your convenience,the source code is available [here](https://github.com/AdobeDocs/adobeio-samples-custom-events-registration)
+simply fill in the `.env` and run `npm start` 
 
-Markdown | Less | Pretty
---- | --- | ---
-*Still* | `renders` | **nicely**
-1 | 2 | 3
+### Check your result on Console
+After using event CLI plugin to create an event provider, you will see event provider registrated in console 
+as well as your jouranling end point
 
-> Blockquotes are very handy in email to emulate reply text.
-> This line is part of the same quote.
+ ![event-provider](assets/event-provider.png)
 
-Quote break.
+Note: You will need your `event provider id` and `event code` from this lesson to fire event in next steps:
 
-> This is a very long line that will still be quoted properly when it wraps. Oh boy let's keep writing to make sure this is long enough to actually wrap for everyone. Oh, you can *put* **Markdown** into a blockquote. 
-
-<dl>
-  <dt>Definition list</dt>
-  <dd>Is something people use sometimes.</dd>
-
-  <dt>Markdown in HTML</dt>
-  <dd>Does *not* work **very** well. Use HTML <em>tags</em>.</dd>
-</dl>
-
-Three or more...
-
----
-
-Hyphens
-
-***
-
-Asterisks
-
-___
-
-Underscores
-
-Here's a line for us to start with.
-
-This line is separated from the one above by two newlines, so it will be a *separate paragraph*.
-
-This line is also a separate paragraph, but...
-This line is only separated by a single newline, so it's a separate line in the *same paragraph*.
-
-Next lesson: [Well done](welldone.md)
+Next lesson: [Lesson3](lesson3.md)

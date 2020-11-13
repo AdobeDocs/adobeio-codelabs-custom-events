@@ -1,29 +1,23 @@
-# Adobe I/O CodeLabs template
+# Build Event-Driven Firefly App Using Custom Events
 
-## Getting started 
+### Overview
 
-Click on the "Use this template" button to copy the template to your namespace. 
+[Project Firefly](https://github.com/AdobeDocs/project-firefly) is a complete framework that enables enterprise developers to build and deploy custom web applications that extend Adobe Experience Cloud solutions and run on Adobe infrastructure. It leverages modern technologies (JAM stack, serverless computing, Node, and React) and ensures best practices when building applications (event-driven architecture, microservices, continuous integration, and delivery). 
 
-The codelab entry point is the [README](README.md). You can put your codelab content including assets under the [lessons](/lessons) directory. The codelab [manifest.json](manifest.json) holds the navigation information and more. Link your lessons in that file in order to render the navigation.
+[Custom Event CLI Plugin](https://github.com/adobe/aio-cli-plugin-events) is an open-source events plugin for the use of third party customers as part of Project firefly. Adobe I/O custom events allows you to build reactive, event-driven applications, based on events originating from various Adobe services. Events are triggered by event providers and can be listened to by journalling or by registering a webhook, Adobe I/O also provide the [Custom Event SDK](https://github.com/adobe/aio-lib-events). The events SDK provides a wrapper over these API calls making it easier for developers to use it as part of their apps. 
 
-## Preview codelab locally
+### User Story
+There are times when users may wish to register their own apps as event provider and integrate other technologies in an event-driven manner (e.g. with other 3rd-party ESPs, notifying call-centres, conducting look-ups to CRM platforms such as Dynamics prior to an e-mail send, etc) 
+A specific demonstration to illustrate this use case has therefore been put together in this lab:
+* Jane build an app using project firefly and she would like to track the likes been clicked by reader
+* Jane registered her app as event provider using custom event
+* Joe could subscribed events from Jane's custom app event registration 
+* When reader click like button or leave a comment, Jane and Joe will all receive event notification
 
-The template codelab is based on the Project Helix https://www.project-helix.io/. Follow instructions as explained.
+In this lab, you will learn how to:
+* Build a simple web app using project firefly framework 
+* Enable event-driven workflows using Adobe I/O custom event template 
 
-`npm i -g @adobe/helix-cli && hlx up` is enough to get you started. Make sure to have at least `npm@6.14.x` installed and an initial commit. 
-
-## Share codelab URL
-
-You can visit https://[REPO_NAME]-[REPO_OWNER].project-helix.page to see it running.
-
-Demo: https://adobeio-codelabs-template-adobedocs.project-helix.page/ 
-
-Make sure to push your changes before sharing the URL.
-
-## Contribute to Adobe I/O CodeLabs
-
-Once your codelab is ready, submit a PR to add it to the index at https://github.com/AdobeDocs/adobeio-codelabs/blob/gh-pages/actions/index.json  
+Next: [Requirements](/lessons/requirements.md).
 
 
-
-  

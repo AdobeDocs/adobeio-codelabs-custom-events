@@ -1,20 +1,37 @@
 {
-  "title": "CodeLab title",
-  "repository": "https://github.com/AdobeDocs/adobeio-codelabs-template",
+  "title": "Getting Started with Adobe I/O Custom Events",
+  "repository": "https://github.com/AdobeDocs/adobeio-codelabs-custom-event",
+  "author": {
+    "name": "Jie Yu",
+    "email": "iodev@adobe.com"
+  },
   "navigation": [{
     "title": "Introduction",
-    "url": "/README"
+    "url": "/README",
+    "duration": 2
   }, {
     "title": "Requirements",
-    "url": "/lessons/requirements"
+    "url": "/lessons/requirements",
+    "duration": 5
   }, {
-    "title": "Lesson 1: Bootstrap your app",
-    "url": "/lessons/lesson1"
+    "title": "Lesson 1: Create a New Firefly App from Template",
+    "url": "/lessons/lesson1",
+    "duration": 10
   }, {
-    "title": "Lesson 2: Write your app",
-    "url": "/lessons/lesson2"
+    "title": "Lesson 2: Register the App as Event Provider",
+    "url": "/lessons/lesson2",
+    "duration": 10
   }, {
-    "title": "Well done",
-    "url": "/lessons/welldone"
+    "title": "Lesson 3: Fire an Event",
+    "url": "/lessons/lesson3",
+    "duration": 10
+  }, {
+    "title": "Lesson 4: Consume Events",
+    "url": "/lessons/lesson4",
+    "duration": 10
+  }, {
+    "title": "Well Done",
+    "url": "/lessons/welldone",
+    "duration": 2
   }]
 }
