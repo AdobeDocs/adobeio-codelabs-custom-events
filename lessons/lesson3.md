@@ -138,16 +138,7 @@ exports.main = main
 ```
 What happens here is that the action exposes a `main` function, which accepts a list of params from the client. It checks the required params for using the `cloudevents-sdk`. 
 
-Next, let's see how the web UI communicates with the backend. In `web-src/src/components` we already provide a template of UI.
-After you select the Actions to `publish-events` and then click the `Invoke` button, it will invokes the action. In the action, it will send out the event. When you invoke, you could also add actual params, in this example, we add `{"payload": "you got a like"}`, in the webhook result, you will see the payload showed in `{"data": "you got a like"}`.
-
-![templateui](assets/template-ui.png)
-
-![eventresult](assets/event-webhook-result.png)
-
-
-### Run and Deploy the Firefly App
-You can run the firefly app locally by execute the below command with AIO CLI
+You can run the firefly app locally by execute the below command with AIO CLI:
 ```bash
 aio app run
 ```
@@ -159,6 +150,14 @@ aio app deploy
 ```
 This command will deploy the app to your namespace, you will get the URL like 
 `https://<Runtime-namespace>.adobeio-static.net/<project-name>-0.0.1/index.html`
-Now if you modify the UI code to make click the `like` button to trigger the event, you should be able to fire the event 
+
+Next, let's see how the web UI communicates with the backend. In `web-src/src/components` we already provide a template of UI.
+After you select the Actions to `publish-events` and then click the `Invoke` button, it will invokes the action. In the action, it will send out the event. When you invoke, you could also add actual params, in this example, we add `{"payload": "you got a like"}`, in the webhook result, you will see the payload showed in `{"data": "you got a like"}`.
+
+Note: Here I use the webhook tool [here](https://io-webhook.herokuapp.com/)to generate a webhook link and put this webhook to the console integration. You can use other webhook tool as discussed in lession 4. 
+
+![templateui](assets/template-ui.png)
+
+![eventresult](assets/event-webhook-result.png)
 
 Next lesson: [Lesson4](lesson4.md)

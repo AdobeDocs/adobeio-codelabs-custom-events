@@ -33,14 +33,10 @@ Name your action, then you have created your project firefly template. Now you c
 
 ![event-provider](assets/publish-event-cli.png)
 
-In this lab, I will create a webpage using this generic template. if this is your first time to use project firefly, follow below
+In this lab, user will create a webpage using this generic template. if this is your first time to use project firefly, follow below instructions:
 * [Creating your First Firefly App](https://github.com/AdobeDocs/project-firefly/blob/master/getting_started/first_app.md)
 
-In our use case, we will develop a simple website with the `like` button. after you finished code development and deployed using `aio app deploy` you will be able to see your app like below
-
-![webpage](assets/webpage.png)
-
-In next lesson, we will show how to use custom event to register this app as event provider and click the like button 
+In next lesson, we will show how to use custom event to register this app as event provider and click the like`invoke` button 
 will fire an event, this event will be consumed by three ways (Journaling, webhook URL, runtime action)
 
 Next lesson: [Lesson2](lesson2.md)

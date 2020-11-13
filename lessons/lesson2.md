@@ -40,7 +40,7 @@ which you can copy, create your `.json` file and fill in details and use it.
 Now with all that we have finished registering the event provider.
 
 Note: another option to register an event provider is to run javascript code
-For your convenience,the source code is available [here](https://github.com/AdobeDocs/adobeio-codelab-event-provider-registration)
+For your convenience,the source code is available [here](https://github.com/AdobeDocs/adobeio-samples-custom-events-registration)
 simply fill in the `.env` and run `npm start` 
 
 ### Check your result on Console
