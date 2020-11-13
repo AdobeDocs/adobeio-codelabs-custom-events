@@ -123,8 +123,8 @@ Select the slack one and save it. Now when you fire event, you should be able to
 ![slack message](assets/slack-message.png)
 
 ### Option 3: Using webhook to consume events 
-You could configure another event delivery method through console by `Edit Events Registration` and add webhook or by using event SDK
-More details about webhook, 
+You could configure another event delivery method through console by `Edit Events Registration` and add webhook 
+
 ![webhook](assets/webhook.png)
 
 Before you can register a webhook, the webhook needs to be online and operational. If not, then the registration will fail. So you need to take care of setting that up first. Your webhook must be hosted on a server. For development, you may use localhost along with a tool like [Ngrok](https://ngrok.com/).
@@ -137,7 +137,7 @@ For more details, follow the link below:
 [how to use webhook](https://www.adobe.io/apis/experienceplatform/events/docs.html#!adobedocs/adobeio-events/master/intro/webhook_docs_intro.md)
 
 ### Let's test it, and fire events
-With that,once you fire the event (in our codelab case, click the like button) you should see them appearing in above three options:
+With that,once you fire the event (in our codelab case, click the invoke button) you should see them appearing in above three options:
 - Through Adobe I/O Journaling API 
 - Get slack message - through slack runtime action webhook
 - Through webhook URL

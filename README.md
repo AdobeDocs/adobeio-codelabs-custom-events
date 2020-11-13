@@ -1,4 +1,4 @@
-# Build Event-Driven Firefly App Using Custom Event
+# Build Event-Driven Firefly App Using Custom Events
 
 ### Overview
 
@@ -16,7 +16,7 @@ A specific demonstration to illustrate this use case has therefore been put toge
 
 In this lab, you will learn how to:
 * Build a simple web app using project firefly framework
-* Enable event-driven workflows using Adobe I/O event library with ease 
+* Enable event-driven workflows using Adobe I/O custom event template 
 
 Next: [Requirements](/lessons/requirements.md).
 

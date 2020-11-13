@@ -1,5 +1,5 @@
 {
-  "title": "Getting Started with Adobe I/O Custom Event",
+  "title": "Getting Started with Adobe I/O Custom Events",
   "repository": "https://github.com/AdobeDocs/adobeio-codelabs-custom-event",
   "author": {
     "name": "Jie Yu",
@@ -22,7 +22,7 @@
     "url": "/lessons/lesson2",
     "duration": 10
   }, {
-    "title": "Lesson 3: Fire Event using Event SDK",
+    "title": "Lesson 3: Fire an Event",
     "url": "/lessons/lesson3",
     "duration": 10
   }, {

@@ -1,7 +1,7 @@
-## Lesson 3: Fire Event using Event SDK
+## Lesson 3: Fire an Event
 
 ### Fire Event
-Once you set up the app and register the event provider, now you can make user click like button as fire event by adding code to your project firefly app, this lesson will walk through the code in publish-event, test it on the UI with "Invoke" button and see the success response
+Once you set up the app and register the event provider, now you can make user click `invoke` button as fire event, this lesson will walk through the code in `publish-event` template, test it on the UI with "invoke" button and see the success response (in this lession using webhook)
 
 You can choose to use this template code at `/actions/publish-events/index.js` or create your own code.
 Within the newly created app, Firstly, set up `package.json` with the lists of dependencies, version, etc. 
@@ -44,8 +44,6 @@ Now let's start to take a deeper look the tempalte code:
 * It is a [web action](https://github.com/AdobeDocs/adobeio-runtime/blob/master/guides/creating_actions.md#invoking-web-actions)
 * The action will be run in the `nodejs:12` [runtime container on I/O Runtime](https://github.com/AdobeDocs/adobeio-runtime/blob/master/reference/runtimes.md)
 * It has some [default params](https://github.com/AdobeDocs/adobeio-runtime/blob/master/guides/creating_actions.md#working-with-parameters) such as `LOG_LEVEL`, you can pass in your `params` like `apiKey`, `provideId` and `eventCode`from `manifest.yml` 
-
-Now let's have a deeper look at the action's source code from template:
 
 ```javascript
 /*
@@ -150,11 +148,12 @@ aio app deploy
 ```
 This command will deploy the app to your namespace, you will get the URL like 
 `https://<Runtime-namespace>.adobeio-static.net/<project-name>-0.0.1/index.html`
+and you will see your deployed link in the terminal
 
 Next, let's see how the web UI communicates with the backend. In `web-src/src/components` we already provide a template of UI.
-After you select the Actions to `publish-events` and then click the `Invoke` button, it will invokes the action. In the action, it will send out the event. When you invoke, you could also add actual params, in this example, we add `{"payload": "you got a like"}`, in the webhook result, you will see the payload showed in `{"data": "you got a like"}`.
+After you select the actions to `publish-events` and then click the `invoke` button, it will invoke the action. In the action, it will send out the event. When you invoke, you could also add actual params, in this example, we add `{"payload": "you got a like"}`, in the webhook result, you will see the payload showed in `{"data": "you got a like"}`.
 
-Note: Here I use the webhook tool [here](https://io-webhook.herokuapp.com/)to generate a webhook link and put this webhook to the console integration. You can use other webhook tool as discussed in lession 4. 
+Note: Here I use the webhook tool [here](https://io-webhook.herokuapp.com/) to generate a webhook link and put this webhook to the console integration. You can use other webhook tool as discussed in lession 4. 
 
 ![templateui](assets/template-ui.png)
 

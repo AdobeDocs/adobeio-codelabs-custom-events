@@ -1,6 +1,5 @@
 ## Lesson 2: Register the App as Event Provider 
 
-After the you have your app ready now you can register the app as event provider. 
 ### Set up project and use CLI to register the app as event provider
 After set up your integration and collect the informations, you can start set up your event provider
 
@@ -44,8 +43,9 @@ For your convenience,the source code is available [here](https://github.com/Adob
 simply fill in the `.env` and run `npm start` 
 
 ### Check your result on Console
-After using event SDK to create an event provider, you will see event provider registrated in console 
+After using event CLI plugin to create an event provider, you will see event provider registrated in console 
 as well as your jouranling end point
+
  ![event-provider](assets/event-provider.png)
 
 Note: You will need your `event provider id` and `event code` from this lesson to fire event in next steps:
