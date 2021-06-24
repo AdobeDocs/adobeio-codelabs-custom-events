@@ -22,7 +22,7 @@ Once you have access to [Adobe I/O Runtime](https://www.adobe.io/apis/cloudplatf
  slack:
         function: actions/slack/index.js
         web: 'yes'
-        runtime: 'nodejs:12'
+        runtime: 'nodejs:14'
         inputs:
           LOG_LEVEL: debug
         annotations:
