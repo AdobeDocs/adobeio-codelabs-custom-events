@@ -18,7 +18,7 @@ packages:
       <project-name>:
         function: actions/<project-name>/index.js
         web: 'yes'
-        runtime: 'nodejs:12'
+        runtime: 'nodejs:14'
         inputs:
           LOG_LEVEL: debug
         annotations:
@@ -27,7 +27,7 @@ packages:
       publish-events:
         function: actions/publish-events/index.js
         web: 'yes'
-        runtime: 'nodejs:12'
+        runtime: 'nodejs:14'
         inputs:
           LOG_LEVEL: debug
           apiKey: <Your-SERVICE_API_KEY>
