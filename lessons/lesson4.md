@@ -18,6 +18,17 @@ Or you can use [Custom event SDK](https://github.com/adobe/aio-lib-events/) to c
 ### Option 2: Using runtime action
 Once you have access to [Adobe I/O Runtime](https://www.adobe.io/apis/cloudplatform/runtime.html) (in our case you already have) and you have your [slack webhook url defined](https://api.slack.com/incoming-webhooks) :
 * Edit the `manifest.yml` to add an action called slack 
+```javascript
+ slack:
+        function: actions/slack/index.js
+        web: 'yes'
+        runtime: 'nodejs:14'
+        inputs:
+          LOG_LEVEL: debug
+        annotations:
+          final: true
+```
+Add in the actions folder with `actions/slack/index.js` with below sample code
 Note: below are the sample code for example, please modify to your own need 
 ```javascript
 const fetch = require('node-fetch')
