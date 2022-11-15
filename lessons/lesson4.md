@@ -10,7 +10,7 @@ There are three ways one can consume event:
 For enterprise developers, Adobe offers journaling to consume events. The Adobe I/O Events Journaling API enables enterprise integrations to consume events according to their own cadence and process them in bulk. Unlike webhooks, no additional registration or other configuration is required; every enterprise integration that is registered for events is automatically enabled for journaling. Journaling data is retained for 7 days. 
 
 After you fire event, you should be able to verify your event through journaling `UNIQUE API ENDPOINT` you get from console by follow below instruction
-[Journaling api](https://www.adobe.io/apis/experienceplatform/events/docs.html#!adobedocs/adobeio-events/master/intro/journaling_api.md)
+[Journaling api](https://www.adobe.io/apis/experienceplatform/events/docs.html#!adobedocs/adobeio-events/master/api/journaling_api.md)
 you could use `Curl` command or `POSTMAN` to call this journaling `UNIQUE API ENDPOINT` to see your fired event.
 Or you can use [Custom event SDK](https://github.com/adobe/aio-lib-events/) to call Journaling API to retrieve your event.
 
@@ -29,90 +29,64 @@ Once you have access to [Adobe I/O Runtime](https://www.adobe.io/apis/cloudplatf
           final: true
 ```
 Add in the actions folder with `actions/slack/index.js` with below sample code
-
+Note: below are the sample code for example, please modify to your own need 
 ```javascript
- var request = require('request');
+const fetch = require('node-fetch')
 
 /* default slackwebhook and channel add yours here and replace the TODO below */
-/* this is a sample action for how to receive event and sent a message to slack */
-var request = require('request');
-
-/* default slackwebhook and channel add yours here and replace the TODO below */
-var slackWebhook = "<your-webhook>";
+var slackWebhookUrl = "<your-webhook>";
 var slackChannel = "<your-slack>";
 
+// main function that will be executed by Adobe I/O Runtime
 async function main (params) {
-  
-  /* print event detail */
-  console.log('in main + event detail: ', params.event);
+  // create a Logger
+  const logger = Core.Logger('main', { level: params.LOG_LEVEL || 'info' })
 
-  var returnObject = {
-    statusCode: 200,
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: ""
-  };
+  try {
+    // 'info' is the default level if not set
+    logger.info('Calling the main action')
 
-  /* handle the challenge */
-  if (params.challenge) {
+    // log parameters, only if params.LOG_LEVEL === 'debug'
+    logger.debug(stringParameters(params))
 
-    console.log('Returning challenge: ' + params.challenge);
+    // check for missing request input parameters and headers
+    const requiredParams = [/* add required params */]
+    const requiredHeaders = [/* add required Headers */]
+    const errorMessage = checkMissingRequestInputs(params, requiredParams, requiredHeaders)
+    if (errorMessage) {
+      // return and log client errors
+      return errorResponse(400, errorMessage, logger)
+    }
 
-    returnObject.body = new Buffer(JSON.stringify({
-      "challenge": params.challenge
-    })).toString('base64');
+    var slackMessage = " Event received: " + JSON.stringify(params)
+    var payload = {
+      "channel": slackChannel,
+      "username": "incoming-webhook",
+      "text": slackMessage,
+      "mrkdwn": true,
+    };
 
-    return returnObject;
+    const response = await fetch(slackWebhookUrl, {
+      method: 'post',
+      headers: { 
+        'Content-type': 'application/json' 
+      },
+      body: JSON.stringify(payload)
+    })
 
-  } else {
+    const respJson = await response.json()
+    return respJson
 
-    /* we need it to run asynchronously, so we are returning a Promise */
-    return new Promise(function (resolve, reject) {
-
-      var slackMessage = " Event received: " + JSON.stringify(params);
-
-      var payload = {
-        "channel": slackChannel,
-        "username": "incoming-webhook",
-        "text": slackMessage,
-        "mrkdwn": true,
-      };
-
-      var options = {
-        method: 'POST',
-        url: slackWebhook,
-        headers:
-            { 'Content-type': 'application/json' },
-        body: JSON.stringify(payload)
-      };
-
-      request(options, function (error, response, body) {
-        if (error) {
-
-          console.log("ERROR: fail to post " + response);
-
-          reject(error);
-
-        } else {
-
-          console.log ("SUCCESS: posted to slack " + slackMessage);
-
-          returnObject.body = new Buffer(JSON.stringify({
-            "slackMessage": slackMessage
-          })).toString('base64');
-
-          resolve(returnObject);
-        }
-
-      });
-
-    });
-
+  } catch (error) {
+    // log any server errors
+    logger.error(error)
+    // return with 500
+    return errorResponse(500, 'server error', logger)
   }
 }
 
 exports.main = main
+
 ```
 After you deployed your runtime action, you can verfiy the webhook is working by 
 ```bash
